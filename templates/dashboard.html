@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MedLink AI Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #0D1B2A, #1B9AAA, #0F3057, #1B9AAA);
+            background-size: 400% 400%;
+            animation: gradientMove 18s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            color: white;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(20px);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .nav-item {
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        .nav-desc {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .logout {
+            padding: 10px;
+            background: #E63946;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 40px 60px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        /* Health Snapshot */
+        .snapshot {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .snapshot h3 {
+            margin-bottom: 15px;
+        }
+
+        .snapshot-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .snapshot-item {
+            min-width: 200px;
+        }
+
+        /* Health Score Meter */
+        .meter-container {
+            margin-top: 20px;
+        }
+
+        .meter {
+            width: 100%;
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 74%;
+            background: #2A9D8F;
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Risk Chart */
+        .chart-bar {
+            height: 14px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #F4A261;
+            border-radius: 10px;
+        }
+
+        /* Emergency Button */
+        .emergency-btn {
+            margin-top: 15px;
+            padding: 12px;
+            background: #E63946;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div>
+        <h2>MedLink AI</h2>
+
+        <div class="nav-links">
+
+            <div class="nav-item">
+                <a href="/chatbot">🤖 AI Chatbot</a>
+                <div class="nav-desc">Instant AI-based medical guidance.</div>
+            </div>
+
+            <div class="nav-item">
+                <a href="/predict_page">❤️ Heart Risk</a>
+                <div class="nav-desc">Advanced cardiovascular risk analysis.</div>
+            </div>
+
+            <div class="nav-item">
+                <a href="/report_page">📊 Report Analysis</a>
+                <div class="nav-desc">AI-powered lab report interpretation.</div>
+            </div>
+
+            <div class="nav-item">
+                <a href="/nearby_page">🏥 Nearby Hospitals</a>
+                <div class="nav-desc">Locate hospitals near your location.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="/logout" class="logout">Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="header">
+        <h1>Welcome Back 👋</h1>
+        <p>Your AI-powered health intelligence dashboard.</p>
+    </div>
+
+    <!-- Health Snapshot -->
+    <div class="snapshot">
+        <h3>🩺 Health Snapshot</h3>
+
+        <div class="snapshot-grid">
+            <div class="snapshot-item">Last Risk Score: <b>68% (Moderate)</b></div>
+            <div class="snapshot-item">HbA1c: <b>6.4%</b></div>
+            <div class="snapshot-item">Cholesterol: <b>Borderline High</b></div>
+            <div class="snapshot-item">Last Report: <b>3 Days Ago</b></div>
+        </div>
+
+        <div class="meter-container">
+            <p>Overall Health Score: 74%</p>
+            <div class="meter">
+                <div class="meter-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid Section -->
+    <div class="grid">
+
+        <!-- Risk Trend -->
+        <div class="card">
+            <h3>📈 Risk Trend</h3>
+            Jan
+            <div class="chart-bar"><div class="bar-fill" style="width:40%"></div></div>
+            Feb
+            <div class="chart-bar"><div class="bar-fill" style="width:60%"></div></div>
+            Mar
+            <div class="chart-bar"><div class="bar-fill" style="width:75%"></div></div>
+        </div>
+
+        <!-- AI Recommendations -->
+        <div class="card">
+            <h3>🤖 AI Recommendations</h3>
+            <p>• Elevated LDL detected in last report.</p>
+            <p>• Recommend lipid profile follow-up.</p>
+            <p>• Maintain regular cardio exercise.</p>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card">
+            <h3>🕒 Recent Activity</h3>
+            <p>✔ Heart Risk Prediction Completed</p>
+            <p>✔ Report Uploaded (Feb 29)</p>
+            <p>✔ Nearby Hospital Search</p>
+        </div>
+
+        <!-- Emergency -->
+        <div class="card">
+            <h3>🚨 Emergency Access</h3>
+            <p>Quick access to nearest emergency centers.</p>
+            <div class="emergency-btn" onclick="window.location.href='/nearby_page'">
+                Find Emergency Care
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

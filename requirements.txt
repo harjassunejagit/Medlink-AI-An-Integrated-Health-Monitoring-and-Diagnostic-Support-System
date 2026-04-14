@@ -1,0 +1,11 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+scikit-learn
+pandas
+numpy
+bcrypt
+requests
+pytesseract
+Pillow
+joblib

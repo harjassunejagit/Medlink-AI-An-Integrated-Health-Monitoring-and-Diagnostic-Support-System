@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account - MedLink AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #0D1B2A, #1B9AAA, #0F3057, #1B9AAA);
+            background-size: 400% 400%;
+            animation: gradientMove 18s ease infinite;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            width: 500px;
+            padding: 60px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(18px);
+            border-radius: 25px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: 0 0 0 2px #1B9AAA;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            background: #1B9AAA;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #2A9D8F;
+            transform: translateY(-2px);
+        }
+
+        .extra {
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .extra a {
+            color: #2A9D8F;
+            text-decoration: none;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Create Your MedLink Account</h2>
+
+    <form action="/register" method="POST">
+        <input type="text" name="username" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Create Password" required>
+        <button type="submit">Register & Continue</button>
+    </form>
+
+    <div class="extra">
+        Already have an account? <a href="/">Login</a>
+    </div>
+
+    <div class="footer-note">
+        By registering, you agree to MedLink's privacy and data security policies.
+    </div>
+
+</div>
+
+</body>
+</html>

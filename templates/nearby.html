@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearby Healthcare - MedLink</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0D1B2A, #1B9AAA);
+            color: white;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        select, button {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+        }
+
+        button {
+            background: #2A9D8F;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1B9AAA;
+        }
+
+        #map {
+            height: 450px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .hospital-card {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .hospital-card button {
+            margin-top: 10px;
+            background: #1B9AAA;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏥 Find Nearby Healthcare</h1>
+
+    <div class="controls">
+        <select id="radius">
+            <option value="5">5 KM</option>
+            <option value="10" selected>10 KM</option>
+            <option value="20">20 KM</option>
+        </select>
+
+        <select id="hospitalType">
+            <option value="all">All Healthcare</option>
+            <option value="hospital">Hospitals Only</option>
+            <option value="clinic">Clinics Only</option>
+            <option value="emergency">Emergency Centers</option>
+        </select>
+
+        <button onclick="findNearby()">Search</button>
+
+        <button onclick="emergencyMode()" style="background:#E63946;">
+            🚨 Emergency Mode
+        </button>
+    </div>
+
+    <div id="map"></div>
+    <div id="results"></div>
+
+</div>
+
+<script>
+
+let map;
+
+function findNearby() {
+
+    if (!navigator.geolocation) {
+        alert("Geolocation not supported");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(position => {
+
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        const radius = document.getElementById("radius").value;
+        const hospitalType = document.getElementById("hospitalType").value;
+
+        // 🔴 Turn background red ONLY if emergency selected
+        if (hospitalType === "emergency") {
+            document.body.style.background =
+                "linear-gradient(135deg, #4A0000, #E63946)";
+        } else {
+            // restore normal theme
+            document.body.style.background =
+                "linear-gradient(135deg, #0D1B2A, #1B9AAA)";
+        }
+
+        fetch("/nearby", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                lat: lat,
+                lng: lng,
+                radius: radius,
+                hospital_type: hospitalType
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            if (map) map.remove();
+
+            map = L.map('map').setView([lat, lng], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup("📍 Your Location")
+                .openPopup();
+
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            if (!data || data.length === 0) {
+                resultsDiv.innerHTML = "<p>No healthcare centers found.</p>";
+                return;
+            }
+
+            data.forEach(place => {
+
+                L.marker([place.latitude, place.longitude])
+                    .addTo(map)
+                    .bindPopup(`<b>${place.name}</b><br>${place.distance} km`);
+
+                const card = document.createElement("div");
+                card.className = "hospital-card";
+
+                card.innerHTML = `
+                    <h3>${place.name}</h3>
+                    <p><strong>Distance:</strong> ${place.distance} km</p>
+                    <a href="https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${place.latitude},${place.longitude}" target="_blank">
+                        <button>Get Directions</button>
+                    </a>
+                `;
+
+                resultsDiv.appendChild(card);
+            });
+
+        });
+
+    });
+}
+
+function emergencyMode() {
+
+    // 🚨 Automatically adjust controls
+    document.getElementById("radius").value = 5;
+    document.getElementById("hospitalType").value = "emergency";
+
+    // 🔴 Immediately turn background red
+    document.body.style.background =
+        "linear-gradient(135deg, #4A0000, #E63946)";
+
+    // Run search
+    findNearby();
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Report Analysis</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0D1B2A, #1B9AAA);
+            min-height: 100vh;
+            padding: 40px;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .upload-card {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        /* File Upload Styling */
+        .file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-btn {
+            background: #1B9AAA;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .custom-file-btn:hover {
+            background: #2A9D8F;
+        }
+
+        .file-name {
+            font-size: 14px;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        button {
+            padding: 12px 25px;
+            border-radius: 10px;
+            border: none;
+            background: #1B9AAA;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #2A9D8F;
+        }
+
+        /* Report Card */
+        .report-card {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            color: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            display: none;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .risk-score {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .risk-category {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .low { background: #2A9D8F; }
+        .moderate { background: #F4A261; }
+        .high { background: #E63946; }
+
+        .report-content {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>🧾 Professional Medical Report Analysis</h1>
+
+<div class="upload-card">
+    <form id="reportForm">
+
+        <div class="file-upload">
+            <input type="file" name="file" id="fileInput" required>
+            <label for="fileInput" class="custom-file-btn">
+                Choose File
+            </label>
+            <span id="fileName" class="file-name">No file selected</span>
+        </div>
+
+        <button type="submit">Analyze Report</button>
+    </form>
+</div>
+
+<div class="report-card" id="reportCard">
+
+    <div class="risk-header">
+        <div class="risk-score" id="riskScore"></div>
+        <div class="risk-category" id="riskCategory"></div>
+    </div>
+
+    <div class="report-content" id="reportContent"></div>
+
+</div>
+
+<script>
+
+document.getElementById("fileInput").addEventListener("change", function() {
+    const fileName = this.files[0]?.name || "No file selected";
+    document.getElementById("fileName").innerText = fileName;
+});
+
+document.getElementById("reportForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch("/analyze_report", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        document.getElementById("reportCard").style.display = "block";
+
+        document.getElementById("riskScore").innerText =
+            "Overall Health Score: " + data.overall_score + " / 100";
+
+        const categoryElement = document.getElementById("riskCategory");
+        categoryElement.innerText = data.risk_category;
+
+        categoryElement.classList.remove("low", "moderate", "high");
+
+        if (data.risk_category.includes("Low")) {
+            categoryElement.classList.add("low");
+        } else if (data.risk_category.includes("Moderate")) {
+            categoryElement.classList.add("moderate");
+        } else {
+            categoryElement.classList.add("high");
+        }
+
+        document.getElementById("reportContent").innerText =
+            data.detailed_report;
+
+    })
+    .catch(error => {
+        alert("Error analyzing report.");
+        console.error(error);
+    });
+
+});
+</script>
+
+</body>
+</html>

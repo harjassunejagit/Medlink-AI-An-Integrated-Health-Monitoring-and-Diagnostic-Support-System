@@ -2,26 +2,26 @@
 # 🏥 Medlink AI  
 ### AI-Powered Health Monitoring & Diagnostic Support System  
 
-Medlink AI is an intelligent healthcare platform designed to assist users with **real-time medical insights**, combining **machine learning, NLP, and OCR** to deliver accurate and accessible healthcare support.
+Medlink AI is an intelligent healthcare platform that provides **real-time medical insights** by integrating **machine learning, NLP, and OCR**. It assists users with symptom analysis, disease prediction, medical report understanding, and healthcare recommendations.
 
 ---
 
 ## 🚀 Features
 
-- 🤖 **AI Medical Chatbot**
-  - Conversational health guidance using NLP (OpenAI API)
+- 🤖 **AI Medical Chatbot**  
+  Provides conversational health guidance using NLP (OpenAI API)
 
-- ❤️ **Disease Prediction**
-  - Heart disease risk prediction using XGBoost model
+- ❤️ **Disease Prediction System**  
+  Predicts heart disease risk using XGBoost with optimized ML pipeline  
 
-- 📄 **Medical Report Analysis**
-  - Extracts and analyzes reports using Tesseract OCR + NLP
+- 📄 **Medical Report Analyzer**  
+  Extracts and interprets data from reports using Tesseract OCR + NLP  
 
-- 🏥 **Hospital Recommendation**
-  - Location-aware suggestions for nearby healthcare services
+- 🏥 **Hospital Recommendation Engine**  
+  Suggests nearby healthcare facilities based on user context  
 
-- ⚡ **Real-Time Diagnostic Support**
-  - Integrated system providing quick insights and recommendations
+- ⚡ **Real-Time Diagnostic Support**  
+  Integrated AI system delivering fast and actionable insights  
 
 ---
 
@@ -35,28 +35,28 @@ Medlink AI is an intelligent healthcare platform designed to assist users with *
 
 ---
 
-## 📊 How It Works
+## 📊 System Workflow
 
-1. User inputs symptoms / uploads medical report  
-2. OCR extracts relevant medical data  
+1. User inputs symptoms or uploads medical reports  
+2. OCR extracts relevant medical information  
 3. ML models analyze disease risk  
-4. Chatbot provides conversational guidance  
+4. Chatbot provides intelligent medical guidance  
 5. System suggests hospitals and next steps  
 
 ---
 
 ## 📈 Results
 
-- Accurate disease risk prediction using optimized ML pipeline  
+- Accurate disease risk prediction using optimized ML models  
 - Automated report analysis reducing manual effort  
-- Unified AI system for faster healthcare decision support  
+- Unified AI pipeline for efficient healthcare decision support  
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Installation & Setup
 
 ```bash
-git clone https://github.com/yourusername/Medlink-AI.git
-cd Medlink-AI
+git clone https://github.com/harjassunejagit/Medlink-AI-An-Integrated-Health-Monitoring-and-Diagnostic-Support-System.git
+cd Medlink-AI-An-Integrated-Health-Monitoring-and-Diagnostic-Support-System
 pip install -r requirements.txt
 python app.py

@@ -5,7 +5,6 @@
 <img src="https://img.shields.io/badge/XGBoost-92.13%25_Acc-FF6600?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/NLP-Sentence_Transformers-8A2BE2?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/OCR-Tesseract-4CAF50?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge"/>
 
 # 🏥 Medlink AI
 
@@ -14,7 +13,7 @@
 **AI-driven web platform combining ML prediction · NLP chatbot · OCR report analysis · geolocation**
 
 
-[Features](#-features) • [Demo](#-modules-at-a-glance) • [Architecture](#-system-architecture) • [Results](#-model-performance) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [Research](#-research-paper)
+[Features](#-features) • [Demo](#-modules-at-a-glance) • [Architecture](#-system-architecture) • [Results](#-model-performance) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) 
 
 </div>
 
@@ -352,27 +351,6 @@ Output: Composite health risk score R
 3. R = Σ wᵢ · rᵢ  (weighted sum)
 4. Normalize R to [0, 100]
 5. R < 15 → Low | 15 ≤ R < 35 → Moderate | R ≥ 35 → High
-```
-
----
-
-## 📋 Requirements
-
-```txt
-flask>=2.3
-flask-login
-flask-sqlalchemy
-xgboost>=1.7
-scikit-learn>=1.3
-sentence-transformers>=2.2
-pandas>=2.0
-numpy>=1.24
-pytesseract>=0.3
-opencv-python>=4.8
-Pillow>=10.0
-requests>=2.31
-bcrypt>=4.0
-joblib>=1.3
 ```
 
 ---

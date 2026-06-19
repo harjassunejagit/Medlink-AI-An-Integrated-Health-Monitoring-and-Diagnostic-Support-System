@@ -1,6 +1,7 @@
 🏥 Medlink AI
 
 An Integrated Health Monitoring & Diagnostic Support System
+Medlink AI is an intelligent healthcare platform that provides **real-time medical insights** by integrating **machine learning, NLP, and OCR**. It assists users with symptom analysis, disease prediction, medical report understanding, and healthcare recommendations.
 
 AI-driven web platform combining ML prediction · NLP chatbot · OCR report analysis · geolocation
 
@@ -14,6 +15,20 @@ Features • Demo • Architecture • Results • Installation • Usage • Te
 Medlink AI is a full-stack intelligent healthcare assistance platform that brings hospital-grade medical intelligence to any web browser. It combines four AI-powered modules into a single unified system:
 
 ModuleTechnologyMetric🫀 Heart Disease PredictorXGBoost + UCI Dataset92.13% accuracy · 0.9601 AUC-ROC🤖 Medical ChatbotSentence Transformers (all-MiniLM-L6-v2)88.8% queries above confidence threshold📄 Lab Report AnalyzerTesseract OCR + Rule-Based NLP9 biomarkers · 3-tier risk stratification📍 Clinic FinderOpenStreetMap Overpass APISub-kilometer precision · real-time
+- 🤖 **AI Medical Chatbot**  
+  Provides conversational health guidance using NLP (OpenAI API)
+
+- ❤️ **Disease Prediction System**  
+  Predicts heart disease risk using XGBoost with optimized ML pipeline  
+
+- 📄 **Medical Report Analyzer**  
+  Extracts and interprets data from reports using Tesseract OCR + NLP  
+
+- 🏥 **Hospital Recommendation Engine**  
+  Suggests nearby healthcare facilities based on user context  
+
+- ⚡ **Real-Time Diagnostic Support**  
+  Integrated AI system delivering fast and actionable insights  
 
 
 ⚠️ Medical Disclaimer: Medlink AI is a clinical decision-support tool. All outputs are supplementary to, and not substitutes for, professional medical diagnosis.
@@ -22,6 +37,13 @@ ModuleTechnologyMetric🫀 Heart Disease PredictorXGBoost + UCI Dataset92.13% ac
 
 ✨ Features
 
+## 📊 System Workflow
+
+1. User inputs symptoms or uploads medical reports  
+2. OCR extracts relevant medical information  
+3. ML models analyze disease risk  
+4. Chatbot provides intelligent medical guidance  
+5. System suggests hospitals and next steps  
 
 🫀 Cardiovascular Risk Prediction — Input 13 clinical parameters and receive Low / Moderate / High risk classification with probability scores
 🤖 Semantic Medical Chatbot — Ask health questions in natural language; retrieves answers from a 10,000-pair physician dialogue corpus using cosine similarity
@@ -32,6 +54,9 @@ ModuleTechnologyMetric🫀 Heart Disease PredictorXGBoost + UCI Dataset92.13% ac
 ⚡ Lightweight Deployment — Runs on a standard Flask server; no GPU or cloud-scale infrastructure required
 
 
+- Accurate disease risk prediction using optimized ML models  
+- Automated report analysis reducing manual effort  
+- Unified AI pipeline for efficient healthcare decision support  
 
 🖥️ Modules At A Glance
 
@@ -228,6 +253,11 @@ python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 
 # 3. Install dependencies
+## ⚙️ Installation & Setup
+
+```bash
+git clone https://github.com/harjassunejagit/Medlink-AI-An-Integrated-Health-Monitoring-and-Diagnostic-Support-System.git
+cd Medlink-AI-An-Integrated-Health-Monitoring-and-Diagnostic-Support-System
 pip install -r requirements.txt
 
 # 4. Train the heart disease model (one-time setup)

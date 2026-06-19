@@ -1,109 +1,84 @@
-🏥 Medlink AI
+<div align="center">
 
-An Integrated Health Monitoring & Diagnostic Support System
-Medlink AI is an intelligent healthcare platform that provides **real-time medical insights** by integrating **machine learning, NLP, and OCR**. It assists users with symptom analysis, disease prediction, medical report understanding, and healthcare recommendations.
+<img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/Flask-2.x-000000?style=for-the-badge&logo=flask&logoColor=white"/>
+<img src="https://img.shields.io/badge/XGBoost-92.13%25_Acc-FF6600?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/NLP-Sentence_Transformers-8A2BE2?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/OCR-Tesseract-4CAF50?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge"/>
 
-AI-driven web platform combining ML prediction · NLP chatbot · OCR report analysis · geolocation
+# 🏥 Medlink AI
 
-Published at ICSSIT — Vellore Institute of Technology, Chennai
+### An Integrated Health Monitoring & Diagnostic Support System
 
-Features • Demo • Architecture • Results • Installation • Usage • Tech Stack • Research
-
-
-📖 Overview
-
-Medlink AI is a full-stack intelligent healthcare assistance platform that brings hospital-grade medical intelligence to any web browser. It combines four AI-powered modules into a single unified system:
-
-ModuleTechnologyMetric🫀 Heart Disease PredictorXGBoost + UCI Dataset92.13% accuracy · 0.9601 AUC-ROC🤖 Medical ChatbotSentence Transformers (all-MiniLM-L6-v2)88.8% queries above confidence threshold📄 Lab Report AnalyzerTesseract OCR + Rule-Based NLP9 biomarkers · 3-tier risk stratification📍 Clinic FinderOpenStreetMap Overpass APISub-kilometer precision · real-time
-- 🤖 **AI Medical Chatbot**  
-  Provides conversational health guidance using NLP (OpenAI API)
-
-- ❤️ **Disease Prediction System**  
-  Predicts heart disease risk using XGBoost with optimized ML pipeline  
-
-- 📄 **Medical Report Analyzer**  
-  Extracts and interprets data from reports using Tesseract OCR + NLP  
-
-- 🏥 **Hospital Recommendation Engine**  
-  Suggests nearby healthcare facilities based on user context  
-
-- ⚡ **Real-Time Diagnostic Support**  
-  Integrated AI system delivering fast and actionable insights  
+**AI-driven web platform combining ML prediction · NLP chatbot · OCR report analysis · geolocation**
 
 
-⚠️ Medical Disclaimer: Medlink AI is a clinical decision-support tool. All outputs are supplementary to, and not substitutes for, professional medical diagnosis.
+[Features](#-features) • [Demo](#-modules-at-a-glance) • [Architecture](#-system-architecture) • [Results](#-model-performance) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [Research](#-research-paper)
 
+</div>
 
+---
 
-✨ Features
+## 📖 Overview
 
-## 📊 System Workflow
+Medlink AI is a **full-stack intelligent healthcare assistance platform** that brings hospital-grade medical intelligence to any web browser. It combines four AI-powered modules into a single unified system:
 
-1. User inputs symptoms or uploads medical reports  
-2. OCR extracts relevant medical information  
-3. ML models analyze disease risk  
-4. Chatbot provides intelligent medical guidance  
-5. System suggests hospitals and next steps  
+| Module | Technology | Metric |
+|--------|-----------|--------|
+| 🫀 **Heart Disease Predictor** | XGBoost + UCI Dataset | **92.13% accuracy · 0.9601 AUC-ROC** |
+| 🤖 **Medical Chatbot** | Sentence Transformers (all-MiniLM-L6-v2) | **88.8% queries above confidence threshold** |
+| 📄 **Lab Report Analyzer** | Tesseract OCR + Rule-Based NLP | 9 biomarkers · 3-tier risk stratification |
+| 📍 **Clinic Finder** | OpenStreetMap Overpass API | Sub-kilometer precision · real-time |
 
-🫀 Cardiovascular Risk Prediction — Input 13 clinical parameters and receive Low / Moderate / High risk classification with probability scores
-🤖 Semantic Medical Chatbot — Ask health questions in natural language; retrieves answers from a 10,000-pair physician dialogue corpus using cosine similarity
-📄 Medical Report Analyzer — Upload a lab report image or PDF; automatically extracts glucose, hemoglobin, cholesterol, creatinine, LDL, HDL, triglycerides, blood pressure, and platelet count, then generates a clinical risk summary
-📍 Nearby Clinic Finder — Finds hospitals and clinics within a configurable radius using your real-time GPS location
-🔐 Secure Authentication — Role-based access control, encrypted password storage, session management
-📊 Admin Dashboard — Monitor platform usage and user activity
-⚡ Lightweight Deployment — Runs on a standard Flask server; no GPU or cloud-scale infrastructure required
+> ⚠️ **Medical Disclaimer:** Medlink AI is a clinical decision-support tool. All outputs are supplementary to, and not substitutes for, professional medical diagnosis.
 
+---
 
-- Accurate disease risk prediction using optimized ML models  
-- Automated report analysis reducing manual effort  
-- Unified AI pipeline for efficient healthcare decision support  
+## ✨ Features
 
-🖥️ Modules At A Glance
+- 🫀 **Cardiovascular Risk Prediction** — Input 13 clinical parameters and receive Low / Moderate / High risk classification with probability scores
+- 🤖 **Semantic Medical Chatbot** — Ask health questions in natural language; retrieves answers from a 10,000-pair physician dialogue corpus using cosine similarity
+- 📄 **Medical Report Analyzer** — Upload a lab report image or PDF; automatically extracts glucose, hemoglobin, cholesterol, creatinine, LDL, HDL, triglycerides, blood pressure, and platelet count, then generates a clinical risk summary
+- 📍 **Nearby Clinic Finder** — Finds hospitals and clinics within a configurable radius using your real-time GPS location
+- 🔐 **Secure Authentication** — Role-based access control, encrypted password storage, session management
+- 📊 **Admin Dashboard** — Monitor platform usage and user activity
+- ⚡ **Lightweight Deployment** — Runs on a standard Flask server; no GPU or cloud-scale infrastructure required
 
-🫀 Module 1 — Heart Disease Risk Predictor
+---
 
+## 🖥️ Modules At A Glance
+
+### 🫀 Module 1 — Heart Disease Risk Predictor
 Enter 13 clinical features (age, chest pain type, cholesterol, resting blood pressure, etc.) and receive:
+- Probability score of cardiovascular disease
+- Risk category: **Low** (<35%) · **Moderate** (35–65%) · **High** (>65%)
+- Key contributing risk factors highlighted
 
-
-Probability score of cardiovascular disease
-Risk category: Low (<35%) · Moderate (35–65%) · High (>65%)
-Key contributing risk factors highlighted
-
-
-🤖 Module 2 — AI Medical Chatbot
-
+### 🤖 Module 2 — AI Medical Chatbot
 Ask any health question in plain English:
+- Powered by `all-MiniLM-L6-v2` Sentence Transformer
+- Matches your query to the most semantically similar physician response using cosine similarity
+- Falls back to a professional consultation advisory if confidence score < 0.30
 
-
-Powered by all-MiniLM-L6-v2 Sentence Transformer
-Matches your query to the most semantically similar physician response using cosine similarity
-Falls back to a professional consultation advisory if confidence score < 0.30
-
-
-📄 Module 3 — Medical Report Analyzer
-
+### 📄 Module 3 — Medical Report Analyzer
 Upload a lab report (JPG, PNG, or PDF):
+1. Image preprocessing (grayscale → noise reduction → adaptive thresholding)
+2. Tesseract OCR text extraction
+3. Regex-based biomarker detection (9 parameters)
+4. Weighted composite risk score → Low / Moderate / High classification
 
-
-Image preprocessing (grayscale → noise reduction → adaptive thresholding)
-Tesseract OCR text extraction
-Regex-based biomarker detection (9 parameters)
-Weighted composite risk score → Low / Moderate / High classification
-
-
-📍 Module 4 — Nearby Clinic Finder
-
+### 📍 Module 4 — Nearby Clinic Finder
 Share your location and find:
+- Hospitals, clinics, and pharmacies near you
+- Sorted by Haversine geodesic distance
+- Rendered on an interactive OpenStreetMap view
 
+---
 
-Hospitals, clinics, and pharmacies near you
-Sorted by Haversine geodesic distance
-Rendered on an interactive OpenStreetMap view
+## 🏛️ System Architecture
 
-
-
-🏛️ System Architecture
-
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                    USER INTERFACE LAYER                     │
 │              Web Browser (HTML/CSS/JavaScript)              │
@@ -128,55 +103,81 @@ Rendered on an interactive OpenStreetMap view
 │                     DATA LAYER                              │
 │  SQLite DB  │  Serialized ML Models  │  Embedding Store     │
 └─────────────────────────────────────────────────────────────┘
+```
 
-The platform follows MVC + Layered Architecture deployed on a Flask WSGI server:
+The platform follows **MVC + Layered Architecture** deployed on a Flask WSGI server:
+- **Presentation Layer** — Browser-based frontend
+- **Application Layer** — Flask routing, auth, REST endpoints
+- **AI/ML Layer** — Four independent intelligent modules
+- **Data Layer** — SQLite, pickled models, filesystem
+- **External Services** — OpenStreetMap, Sentence Transformer Hub
 
+---
 
-Presentation Layer — Browser-based frontend
-Application Layer — Flask routing, auth, REST endpoints
-AI/ML Layer — Four independent intelligent modules
-Data Layer — SQLite, pickled models, filesystem
-External Services — OpenStreetMap, Sentence Transformer Hub
+## 📊 Model Performance
 
+### Heart Disease Predictor (XGBoost)
 
+| Metric | Score |
+|--------|-------|
+| **Accuracy** | **92.13%** |
+| **AUC-ROC** | **0.9601** |
+| F1-Score | 0.9214 |
+| Precision | 0.9163 |
+| Recall | 0.8980 |
+| CV Mean Accuracy (5-fold) | 0.9213 ± 0.0083 |
+| True Positives | 44 / 49 |
+| True Negatives | 47 / 51 |
 
-📊 Model Performance
+### Comparison Against Prior Work (UCI Cleveland Dataset)
 
-Heart Disease Predictor (XGBoost)
+| Method | Accuracy |
+|--------|----------|
+| Logistic Regression | 84.72% |
+| Decision Tree | 82.16% |
+| SVM | 88.94% |
+| Random Forest (Mohan et al.) | 89.35% |
+| Stacking Ensemble (Shah et al.) | 90.80% |
+| **Medlink XGBoost (Ours)** | **92.13%** ✅ |
 
-MetricScoreAccuracy92.13%AUC-ROC0.9601F1-Score0.9214Precision0.9163Recall0.8980CV Mean Accuracy (5-fold)0.9213 ± 0.0083True Positives44 / 49True Negatives47 / 51
+### Top Predictive Features (Feature Importance)
+1. 🩸 **Thalassemia type** — 0.241
+2. 🫀 **Major vessels count** — 0.188
+3. 💢 **Chest pain type** — 0.154
+4. 💓 **Max heart rate achieved** — 0.121
+5. ⚡ **ST depression (oldpeak)** — 0.098
 
-Comparison Against Prior Work (UCI Cleveland Dataset)
+### Medical Chatbot Performance
+- Test queries evaluated: **900**
+- Queries above confidence threshold (0.30): **88.8%**
+- Majority similarity scores: **0.65 – 0.80 range**
+- Fallback rate: **11.2%**
 
-MethodAccuracyLogistic Regression84.72%Decision Tree82.16%SVM88.94%Random Forest (Mohan et al.)89.35%Stacking Ensemble (Shah et al.)90.80%Medlink XGBoost (Ours)92.13% ✅
+---
 
-Top Predictive Features (Feature Importance)
+## 🛠️ Tech Stack
 
+| Component | Technology |
+|-----------|-----------|
+| **Backend Framework** | Flask (Python) |
+| **ML Model** | XGBoost |
+| **NLP / Embeddings** | Sentence Transformers (`all-MiniLM-L6-v2`) |
+| **Similarity Search** | Cosine Similarity (scikit-learn) |
+| **OCR Engine** | Tesseract OCR |
+| **Image Processing** | OpenCV, Pillow |
+| **Geolocation** | OpenStreetMap Overpass API |
+| **Distance Calculation** | Haversine formula |
+| **Database** | SQLite |
+| **Data Processing** | pandas, NumPy, scikit-learn |
+| **Frontend** | HTML5, CSS3, JavaScript |
+| **Authentication** | Flask-Login, bcrypt |
+| **Model Serialization** | joblib / pickle |
 
-🩸 Thalassemia type — 0.241
-🫀 Major vessels count — 0.188
-💢 Chest pain type — 0.154
-💓 Max heart rate achieved — 0.121
-⚡ ST depression (oldpeak) — 0.098
+---
 
+## 📁 Project Structure
 
-Medical Chatbot Performance
-
-
-Test queries evaluated: 900
-Queries above confidence threshold (0.30): 88.8%
-Majority similarity scores: 0.65 – 0.80 range
-Fallback rate: 11.2%
-
-
-
-🛠️ Tech Stack
-
-ComponentTechnologyBackend FrameworkFlask (Python)ML ModelXGBoostNLP / EmbeddingsSentence Transformers (all-MiniLM-L6-v2)Similarity SearchCosine Similarity (scikit-learn)OCR EngineTesseract OCRImage ProcessingOpenCV, PillowGeolocationOpenStreetMap Overpass APIDistance CalculationHaversine formulaDatabaseSQLiteData Processingpandas, NumPy, scikit-learnFrontendHTML5, CSS3, JavaScriptAuthenticationFlask-Login, bcryptModel Serializationjoblib / pickle
-
-
-📁 Project Structure
-
+```
 medlink-ai/
 │
 ├── app.py                      # Flask application entry point
@@ -220,20 +221,19 @@ medlink-ai/
 │
 ├── requirements.txt
 └── README.md
+```
 
+---
 
-⚙️ Installation
+## ⚙️ Installation
 
-Prerequisites
+### Prerequisites
+- Python 3.9+
+- Tesseract OCR engine installed on your system
 
-
-Python 3.9+
-Tesseract OCR engine installed on your system
-
-
-Install Tesseract:
-
-bash# Ubuntu / Debian
+**Install Tesseract:**
+```bash
+# Ubuntu / Debian
 sudo apt-get install tesseract-ocr
 
 # macOS
@@ -241,10 +241,12 @@ brew install tesseract
 
 # Windows
 # Download installer from: https://github.com/UB-Mannheim/tesseract/wiki
+```
 
-Setup
+### Setup
 
-bash# 1. Clone the repository
+```bash
+# 1. Clone the repository
 git clone https://github.com/yourusername/medlink-ai.git
 cd medlink-ai
 
@@ -253,11 +255,6 @@ python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 
 # 3. Install dependencies
-## ⚙️ Installation & Setup
-
-```bash
-git clone https://github.com/harjassunejagit/Medlink-AI-An-Integrated-Health-Monitoring-and-Diagnostic-Support-System.git
-cd Medlink-AI-An-Integrated-Health-Monitoring-and-Diagnostic-Support-System
 pip install -r requirements.txt
 
 # 4. Train the heart disease model (one-time setup)
@@ -270,14 +267,16 @@ flask db upgrade
 
 # 6. Run the application
 python app.py
+```
 
-Visit http://localhost:5000 in your browser.
+Visit **http://localhost:5000** in your browser.
 
+---
 
-🚀 Usage
+## 🚀 Usage
 
-Heart Disease Prediction
-
+### Heart Disease Prediction
+```
 1. Navigate to /heart-disease
 2. Enter 13 clinical parameters:
    age, sex, chest pain type, resting BP, cholesterol,
@@ -286,34 +285,39 @@ Heart Disease Prediction
    major vessels, thalassemia type
 3. Click "Predict Risk"
 4. Receive: probability score + Low/Moderate/High classification
+```
 
-Medical Chatbot
-
+### Medical Chatbot
+```
 1. Navigate to /chatbot
 2. Type your health question in natural language
    Example: "What are the symptoms of high blood pressure?"
 3. Receive: most semantically matched physician response
+```
 
-Report Analyzer
-
+### Report Analyzer
+```
 1. Navigate to /report-analyzer
 2. Upload your lab report (JPG, PNG, or PDF)
 3. System extracts: glucose, hemoglobin, cholesterol,
    triglycerides, creatinine, BP, HDL, LDL, platelets
 4. Receive: per-biomarker status + composite risk score
+```
 
-Clinic Finder
-
+### Clinic Finder
+```
 1. Navigate to /clinic-finder
 2. Allow browser location access
 3. Set search radius (default: 5km)
 4. View nearby hospitals and clinics sorted by distance
+```
 
+---
 
-🔬 Algorithms
+## 🔬 Algorithms
 
-Semantic Retrieval (Chatbot)
-
+### Semantic Retrieval (Chatbot)
+```
 Input:  User query q, embedding database D = {d₁, d₂, ..., dₙ}
 Output: Best-matched physician response r*
 
@@ -323,9 +327,10 @@ Output: Best-matched physician response r*
 3. k = argmax(Sᵢ)
 4. If Sₖ ≥ τ (0.30): return response rₖ
    Else: return fallback medical disclaimer
+```
 
-Cardiovascular Risk Stratification
-
+### Cardiovascular Risk Stratification
+```
 Input:  Clinical feature vector X
 Output: Risk category R
 
@@ -335,9 +340,10 @@ Output: Risk category R
    p < 0.35  → Low Risk
    p < 0.65  → Moderate Risk
    p ≥ 0.65  → High Risk
+```
 
-Clinical Risk Aggregation (Report Analyzer)
-
+### Clinical Risk Aggregation (Report Analyzer)
+```
 Input:  Extracted report text T
 Output: Composite health risk score R
 
@@ -346,11 +352,14 @@ Output: Composite health risk score R
 3. R = Σ wᵢ · rᵢ  (weighted sum)
 4. Normalize R to [0, 100]
 5. R < 15 → Low | 15 ≤ R < 35 → Moderate | R ≥ 35 → High
+```
 
+---
 
-📋 Requirements
+## 📋 Requirements
 
-txtflask>=2.3
+```txt
+flask>=2.3
 flask-login
 flask-sqlalchemy
 xgboost>=1.7
@@ -364,54 +373,37 @@ Pillow>=10.0
 requests>=2.31
 bcrypt>=4.0
 joblib>=1.3
+```
 
+---
 
-Key findings:
+## 🗺️ Roadmap
 
+- [ ] Real-time ECG signal analysis module
+- [ ] Federated learning for privacy-preserving model updates
+- [ ] Expansion of report analyzer to include cardiac troponin and thyroid panels
+- [ ] Mobile application (React Native)
+- [ ] Cloud deployment (AWS / GCP)
+- [ ] Longitudinal clinical validation study
+- [ ] Multi-language chatbot support
+- [ ] Integration with electronic health record (EHR) systems
 
-XGBoost achieves 92.13% accuracy and 0.9601 AUC-ROC — outperforming all compared methods on UCI Cleveland dataset
-Sentence Transformer semantic retrieval achieves 88.8% query confidence rate on 900 test queries
-System delivers end-to-end response in < 2 seconds for prediction and chatbot; 3–5 seconds for report analysis
-Full platform runs on standard Flask server — no GPU or cloud infrastructure required
+---
 
+## ⚠️ Limitations
 
+- Heart disease model trained on UCI Cleveland dataset (303 samples) — limited demographic diversity
+- OCR accuracy decreases for handwritten or low-quality scanned documents
+- Chatbot knowledge base may not cover rare or highly specialized medical conditions
+- No real-time hospital integration or live health data feeds
+- Not validated in clinical settings with real patients — should not replace professional diagnosis
 
-🗺️ Roadmap
+---
 
-
- Real-time ECG signal analysis module
- Federated learning for privacy-preserving model updates
- Expansion of report analyzer to include cardiac troponin and thyroid panels
- Mobile application (React Native)
- Cloud deployment (AWS / GCP)
- Longitudinal clinical validation study
- Multi-language chatbot support
- Integration with electronic health record (EHR) systems
-
-
-
-⚠️ Limitations
-
-
-Heart disease model trained on UCI Cleveland dataset (303 samples) — limited demographic diversity
-OCR accuracy decreases for handwritten or low-quality scanned documents
-Chatbot knowledge base may not cover rare or highly specialized medical conditions
-No real-time hospital integration or live health data feeds
-Not validated in clinical settings with real patients — should not replace professional diagnosis
-
-
-
-🤝 Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Here are ways you can help:
 
-
-🐛 Report bugs via Issues
-💡 Suggest features or improvements
-📊 Contribute larger/more diverse clinical datasets
-🌐 Add more languages to the chatbot corpus
-🧪 Write unit tests
-
-👨‍💻 Author
+## 👨‍💻 Author
 
 Harjas Suneja
